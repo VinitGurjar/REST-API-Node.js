@@ -3,5 +3,13 @@
 const app = require("express")();
 const PORT = 8080;
 
-//calling api to listen for the port
-app.listen(PORT, () => console.log(`it's alive on http://localhost:${PORT} `));
+//creating an endpoint
+app.get(
+  "/some" /*ROUTE*/,
+  (req, res) => {
+    res.status(200).send({
+      some: "yo",
+      where: "there",
+    });
+  } /*HANDLER*/
+);
