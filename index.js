@@ -18,4 +18,16 @@ app.get(
 );
 
 //Post Endpoint with a Route parameters for capturing synamic values in the URL
-app.post("/some/:id ");
+//For the user to create new data
+app.post("/some/:id ", (req, res) => {
+  const { id } = req.params;
+  const { logo } = req.body;
+
+  if (!logo) {
+    res.status(404).send({ Message: "Logo is imp! " });
+  }
+
+  res.send({
+    some: `context with your ${logo} and ID of ${id}`,
+  });
+});
