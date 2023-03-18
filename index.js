@@ -1,7 +1,12 @@
 //Code for our rest api
 //importing express which is also a function
-const app = require("express")();
+//Refactoring the code after writing the endpoints
+const express = require("express");
+const app = express();
 const PORT = 8080;
+
+//Implementing the middleware express.josn which will convert the body to json
+app.use(express.json());
 
 //Defined a port for on server to listen our API
 app.listen(PORT, () => console.log(`he's alive on http://localhost:${PORT}`));
@@ -31,3 +36,6 @@ app.post("/some/:id ", (req, res) => {
     some: `context with your ${logo} and ID of ${id}`,
   });
 });
+
+//Now Express does not parse the body of request by defualt.
+//So we have to set a middelware that tell express to parse json
